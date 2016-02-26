@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<!--This is a very bland looking web page needs a css and a few changes to help make it better
+    Also needs to have the sql stuff added-->
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Peer Evaluation Questions</title>
+    </head>
+    <body>
+        <?php
+        //variables
+        $leadership = $tech = $promptness = $friend = $contribution = $improvement = $response = "";
+        //error variables
+        $leadershipErr = $techErr = $promptnessErr = $friendErr = $contributionErr = $improvementErr = $responseErr = "";
+        
+        if ($_SERVER["REQUEST_METHOD"] == "POST"){
+            
+            //checks if empty
+            if(empty($_POST["leadership"])){
+                //returns error if it is
+                $leadershipErr = "Response is required.";
+                
+            }
+            else{
+                //needs to set something up if not empty
+                $leadership =
+                //checks if digits were entered        
+                if(!preg_match("/^[0-9]*$/", $leadership)){
+                    //error message if not
+                    $leadershipErr = "Only numbers allowed.";
+                }
+            }
+            
+            if(empty($_POST["tech"])){
+                $techErr = "Response is required.";
+                
+            }
+            else{
+                $tech =
+                if(!preg_match("/^[0-9]*$/", $tech)){
+                    $techErr = "Only numbers allowed.";
+                }
+            }
+            
+            if(empty($_POST["promptness"])){
+                $promptnessErr = "Response is required.";
+                
+            }
+            else{
+                $promptness =
+                if(!preg_match("/^[0-9]*$/", $promptness)){
+                    $promptnessErr = "Only numbers allowed.";
+                }
+            }
+            
+            if(empty($_POST["friend"])){
+                $friendErr = "Response is required.";
+                
+            }
+            else{
+                $friend =
+                if(!preg_match("/^[0-9]*$/", $friend)){
+                    $friendErr = "Only numbers allowed.";
+                }
+            }
+            
+            if(empty($_POST["contribution"])){
+                $contributionErr = "Response is required.";
+                
+            }
+            else{
+                $contribution =
+                if(!preg_match("/^[0-9]*$/", $contribution)){
+                    $contributionErrErr = "Only numbers allowed.";
+                }
+            }
+            
+            //need to add response areas
+            
+            
+        }
+        
+        ?>
+        
+        <h1>Evaluation</h1>
+        <form method="post">
+            Please evaluate the following subjects regarding your team member on a scale of 0-100:
+            Leadership: <input type="text" name="leadership" value="<?php echo $leadership; ?>">
+            Technical Contribution: <input type="text" name="tech" value="<?php echo $tech; ?>">
+            Promptness: <input type="text" name="promptness" value="<?php echo $promptness; ?>">
+            Friendliness: <input type="text" name="friend" value="<?php echo $friend; ?>">
+            Overall Contribution: <input type="text" name="contribution" value="<?php echo $contribution; ?>">
+            
+            In the following area leave a written response on what your team member could do to help 
+            improve his overall group work:
+            <textarea name="improvement" rows="10" cols="100"><?php echo $improvement; ?></textarea>
+            
+            If there is anything else you would like to evaluate your team member on put your response
+            here:
+            <textarea name="response" rows="10" cols="100"><?php echo $response; ?></textarea>
+        </form>
+    </body>
+</html>
